@@ -1,4 +1,4 @@
-name: Jenkins Replica
+name: Multi Step
 on: push
 jobs:
   build:
