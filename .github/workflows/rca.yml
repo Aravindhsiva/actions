@@ -1,0 +1,29 @@
+name: Rca Pipeline
+on:
+  # push:
+  #   branches: [master]
+  workflow_dispatch:
+    inputs:
+      rallyMilestoneId:
+        type: string
+        required: true
+        description: Rally Milestone Id
+      changeRequestTicketId:
+        type: string
+        required: true
+        description: Change Request Ticket Id
+jobs:
+  rca-generator:   
+    runs-on: ubuntu-latest
+  
+    steps:  
+      # Step to print the inputs  
+      - name: Print Inputs  
+        run: |  
+          echo "Rally Milestone ID: ${{ github.event.inputs.rallyMilestoneId }}"  
+          echo "Change Request Ticket ID: ${{ github.event.inputs.changeRequestTicketId }}"  
+          echo "Environment: ${{ github.event.inputs.environment }}"  
+        
+      # Step to execute the RCA pipeline action  
+      - name: Execute RCA Pipeline
+        uses: actions/checkout@v4
